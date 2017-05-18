@@ -769,7 +769,8 @@
               if (!minDate && !maxDate) {
                 var startDate = module.get.startDate();
                 minDate = startDate && settings.minDate ? new Date(Math.max(startDate, settings.minDate)) : startDate || settings.minDate;
-                maxDate = settings.maxDate;
+				var endDate = module.get.endDate();
+                maxDate = endDate && settings.maxDate ? new Date(Math.min(endDate, settings.maxDate)) : endDate || settings.maxDate;
               }
               minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), 5 * Math.ceil(minDate.getMinutes() / 5));
               return !(!date ||
